@@ -1,0 +1,76 @@
+body {
+  background: #1c1d23;
+  overflow-x: hidden;
+}
+nav {
+  .input-wrapper {
+    width: 40%;
+    .has-search {
+      .form-control {
+        border: #323339;
+        padding: 0.65rem;
+        padding-left: 2.375rem !important;
+        background: #323339;
+        color: #95929d;
+        border-radius: 2rem;
+        &:focus {
+          outline: none;
+          box-shadow: none;
+        }
+        &-feedback {
+          position: absolute;
+          z-index: 2;
+          display: block;
+          width: 2.375rem;
+          height: 2.375rem;
+          line-height: 2.875rem;
+          text-align: center;
+          pointer-events: none;
+          color: #555459;
+        }
+      }
+    }
+  }
+}
+section {
+  .card {
+    user-select: none;
+    width: 14rem;
+    &-container {
+      overflow-x: auto;
+      margin-bottom: 3rem;
+    }
+    &-wrapper {
+      border-radius: 1rem;
+    }
+    &-img-top {
+      width: 100%;
+      height: 25vw;
+      object-fit: cover;
+    }
+    img {
+      border-radius: 1rem;
+      transition: all 1s;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+.custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    &-track {
+      background: #262626;
+    }
+    &-thumb {
+      background: darken(#95929d, 30%);
+      border-radius: 2rem;
+      &:hover {
+        cursor: pointer !important;
+        background: lighten(#262626, 20%);
+      }
+    }
+  }
+}

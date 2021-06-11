@@ -1,0 +1,186 @@
+body {
+  background: #1c1d23;
+  overflow-x: hidden;
+}
+
+a {
+  color: #00b300;
+}
+
+a:hover {
+  color: green;
+}
+
+nav .input-wrapper {
+  width: 40%;
+}
+
+nav .input-wrapper .has-search .form-control {
+  border: #323339;
+  padding: 0.65rem;
+  padding-left: 2.375rem !important;
+  background: #323339;
+  color: #95929d;
+  border-radius: 2rem;
+}
+
+nav .input-wrapper .has-search .form-control:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+nav .input-wrapper .has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.875rem;
+  text-align: center;
+  pointer-events: none;
+  color: #555459;
+}
+
+section .img-viewer {
+  position: relative;
+  background: green;
+  width: 98.59vw;
+  height: 20vw;
+}
+
+section .header .icons i {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+section .card {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  width: 14rem;
+}
+
+section .card-container {
+  overflow-x: auto;
+  margin-bottom: 3rem;
+}
+
+section .card-wrapper {
+  border-radius: 1rem;
+}
+
+section .card-img-top {
+  width: 100%;
+  height: 25vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+section .card img {
+  border-radius: 1rem;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+section .card img:hover {
+  cursor: pointer;
+}
+
+section.movie-details-view {
+  position: fixed;
+  top: 0%;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  padding-top: 7.5rem;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  z-index: 5;
+}
+
+section.movie-details-view .get-back-btn {
+  position: absolute;
+  top: 5%;
+}
+
+section.movie-details-view .get-back-btn i {
+  pointer-events: none;
+}
+
+section.movie-details-view .movie-info .card {
+  width: 19rem;
+}
+
+section.movie-details-view .movie-info .card-container {
+  overflow-x: hidden;
+  margin-bottom: 0 !important;
+}
+
+section.movie-details-view .movie-info .card-img-top {
+  width: 17rem;
+  height: unset;
+  -o-object-fit: unset;
+     object-fit: unset;
+  border-radius: .25rem;
+}
+
+section.movie-details-view .genre-item {
+  color: #95929d;
+  background: #262626;
+  border-radius: 1.2rem;
+}
+
+section.movie-details-view .movie-title h4 {
+  color: whitesmoke;
+  letter-spacing: 1px;
+  word-wrap: break-word;
+}
+
+section.movie-details-view .movie-title .contents {
+  width: 70vw;
+}
+
+section.movie-details-view .movie-overview textarea {
+  width: 70vw;
+  overflow: auto;
+  color: #828282;
+  line-height: 1.7;
+  font-size: 1.1rem;
+  resize: none;
+}
+
+section.movie-details-view .movie-overview textarea:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #262626;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #49474f;
+  border-radius: 2rem;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  cursor: pointer !important;
+  background: #595959;
+}
+
+.op {
+  overflow: hidden;
+}
+/*# sourceMappingURL=style.css.map */
