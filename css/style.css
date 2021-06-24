@@ -3,8 +3,20 @@ body {
   overflow-x: hidden;
 }
 
+.active {
+  color: #00a1ed !important;
+}
+
+nav .logo-img {
+  width: 50px;
+}
+
+nav .navigations a {
+  color: #6c757d;
+}
+
 nav .input-wrapper {
-  width: 40%;
+  width: 25%;
 }
 
 nav .input-wrapper .has-search .form-control {

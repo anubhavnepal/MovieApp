@@ -2,9 +2,22 @@ body {
   background: #1c1d23;
   overflow-x: hidden;
 }
+.active {
+  color: #00a1ed !important;
+}
 nav {
+  .logo {
+    &-img {
+      width: 50px;
+    }
+  }
+  .navigations {
+    a {
+      color: #6c757d;
+    }
+  }
   .input-wrapper {
-    width: 40%;
+    width: 25%;
     .has-search {
       .form-control {
         border: #323339;
