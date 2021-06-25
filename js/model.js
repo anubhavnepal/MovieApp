@@ -33,14 +33,21 @@ async function getRes(url, err = "Something went wrong") {
   return await res.json();
 }
 
-function mapTitle(item,element) {
+function mapTitle(item, element) {
   const imgUrl = `https://image.tmdb.org/t/p/w500${item.poster_path}`;
   const id = item.id;
   containerHandler(element, imgUrl, id);
 }
-
+function renderLoader() {
+  window.addEventListener("load", () => {
+    document.body.classList.remove("overflow-hidden");
+    document.querySelector(".loader").classList.add("d-none");
+    document.querySelector(".navbar").classList.add("sticky-top");
+  });
+}
 async function moviesHandler() {
   try {
+    renderLoader();
     const data = await Promise.all([
       getRes(
         "https://api.themoviedb.org/3/movie/upcoming?api_key=531bf6af87ea9bad6ceb5623091d31fe&language=en-US&page=2"

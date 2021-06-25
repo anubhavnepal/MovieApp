@@ -10,13 +10,20 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
     integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+   rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+ />
   <script src="js/model.js" defer></script>
   <title>MOVIENEST</title>
 </head>
 
-<body class="custom-scrollbar">
-  <nav class="navbar navbar-expand-lg navbar-dark pt-4">
+<body class="custom-scrollbar overflow-hidden">
+  <section class="loader text-center pt-5 text-light">
+    <img src="img/pre-loader.png" class="animate__animated animate__pulse animate__infinite" alt="">
+  </section>
+  <section class="navbar navbar-expand-lg navbar-dark py-4 mb-4">
     <div class="container justify-content-around ">
       <div class="logo">
         <a class="" href="index.html">
@@ -35,7 +42,7 @@
       </div>
     </div>
     </div>
-  </nav>
+  </section >
 
   <section class="upcoming text-light">
     <div class="header d-flex justify-content-between align-items-center px-4 my-2">
@@ -44,7 +51,7 @@
       </div>
     </div>
     <div class="card-container upcoming-movie d-flex justify-content-start px-4">
- 
+
     </div>
   </section>
   <section class="new-releases text-light">
@@ -54,7 +61,7 @@
       </div>
     </div>
     <div class="card-container new-releases-movie d-flex justify-content-start px-4">
- 
+
     </div>
   </section>
   <section class="top-rated text-light">
@@ -64,7 +71,7 @@
       </div>
     </div>
     <div class="card-container top-rated-movie d-flex justify-content-start px-4">
- 
+
     </div>
   </section>
 </body>

@@ -7,19 +7,44 @@ body {
   color: #00a1ed !important;
 }
 
-nav .logo-img {
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #1c1d23;
+  z-index: 10;
+}
+
+.loader img {
+  position: absolute;
+  left: 50%;
+  margin-left: -50px;
+  top: 50%;
+  margin-top: -50px;
+}
+
+section.navbar {
+  background: #1c1d23;
+}
+
+section.navbar .logo-img {
   width: 50px;
 }
 
-nav .navigations a {
+section.navbar .navigations a {
   color: #6c757d;
 }
 
-nav .input-wrapper {
+section.navbar .input-wrapper {
   width: 25%;
 }
 
-nav .input-wrapper .has-search .form-control {
+section.navbar .input-wrapper .has-search .form-control {
   border: #323339;
   padding: 0.65rem;
   padding-left: 2.375rem !important;
@@ -28,13 +53,13 @@ nav .input-wrapper .has-search .form-control {
   border-radius: 2rem;
 }
 
-nav .input-wrapper .has-search .form-control:focus {
+section.navbar .input-wrapper .has-search .form-control:focus {
   outline: none;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
-nav .input-wrapper .has-search .form-control-feedback {
+section.navbar .input-wrapper .has-search .form-control-feedback {
   position: absolute;
   z-index: 2;
   display: block;

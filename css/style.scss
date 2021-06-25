@@ -5,47 +5,66 @@ body {
 .active {
   color: #00a1ed !important;
 }
-nav {
-  .logo {
-    &-img {
-      width: 50px;
-    }
+.overflow-hidden {
+  overflow: hidden;
+}
+.loader {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #1c1d23;
+  z-index: 10;
+  img {
+    position: absolute;
+    left: 50%;
+    margin-left: -50px;
+    top: 50%;
+    margin-top: -50px;
   }
-  .navigations {
-    a {
-      color: #6c757d;
+}
+section {
+  &.navbar {
+    background: #1c1d23;
+    .logo {
+      &-img {
+        width: 50px;
+      }
     }
-  }
-  .input-wrapper {
-    width: 25%;
-    .has-search {
-      .form-control {
-        border: #323339;
-        padding: 0.65rem;
-        padding-left: 2.375rem !important;
-        background: #323339;
-        color: #95929d;
-        border-radius: 2rem;
-        &:focus {
-          outline: none;
-          box-shadow: none;
-        }
-        &-feedback {
-          position: absolute;
-          z-index: 2;
-          display: block;
-          width: 2.375rem;
-          height: 2.375rem;
-          line-height: 2.875rem;
-          text-align: center;
-          pointer-events: none;
-          color: #555459;
+    .navigations {
+      a {
+        color: #6c757d;
+      }
+    }
+    .input-wrapper {
+      width: 25%;
+      .has-search {
+        .form-control {
+          border: #323339;
+          padding: 0.65rem;
+          padding-left: 2.375rem !important;
+          background: #323339;
+          color: #95929d;
+          border-radius: 2rem;
+          &:focus {
+            outline: none;
+            box-shadow: none;
+          }
+          &-feedback {
+            position: absolute;
+            z-index: 2;
+            display: block;
+            width: 2.375rem;
+            height: 2.375rem;
+            line-height: 2.875rem;
+            text-align: center;
+            pointer-events: none;
+            color: #555459;
+          }
         }
       }
     }
   }
-}
-section {
   .card {
     user-select: none;
     width: 14rem;
