@@ -1,8 +1,9 @@
 export const state = {
-  result:{}
+  result: {},
+  details:{},
 }
 
-async function getRes(url, err = "Something went wrong") {
+const getRes = async function(url, err = "Something went wrong") {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`${err} (${res.status})`);
   return await res.json();
@@ -26,4 +27,27 @@ export const loadMovie = async function () {
   } catch(err) {
     alert(err);
    }
- }
+}
+
+export const loadMovieDetails = async function (id) {
+  try {
+    const data = await getRes(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=531bf6af87ea9bad6ceb5623091d31fe&append_to_response=videos`
+    );
+    let genres = data.genres.map((item) => item.name);
+    const videoLink = data.videos.results[0].key;
+    state.details = {
+      imgSrc: `https://image.tmdb.org/t/p/w500/${data.poster_path}`,
+      title: data.title,
+      vote: data.vote_average,
+      genre: genres,
+      video: `https://www.youtube.com/watch?v=${videoLink}`,
+      releaseDate: data.release_date,
+      runtime: data.runtime,
+      tagline: data.tagline,
+      overview: data.overview,
+    };
+  } catch (err) {
+    alert(err);
+  }
+}

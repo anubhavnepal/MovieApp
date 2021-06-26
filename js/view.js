@@ -1,12 +1,26 @@
+export const movDetails = document.querySelector(".movie-details-view");
+export const genreCon = document.querySelector(".genre");
 const upMovCon = document.querySelector(".upcoming-movie");
 const newMovCon = document.querySelector(".new-releases-movie");
 const topMovCon = document.querySelector(".top-rated-movie");
-
+const movieIdImg = document.getElementById("imgMovieId");
+const titleTxt = document.querySelector(".title-txt");
+const ratings = document.querySelector(".ratings");
+const runTime = document.querySelector(".run-time");
+const releaseDate = document.querySelector(".release-date");
+const tagLine = document.querySelector(".movie-tagline");
+const overviewTxt = document.querySelector(".overview-txt");
 class MovieView {
   #data;
+  #details;
   renderData(data) {
     this.#data = data;
-    this.displayElement();
+    this.displayWrapper();
+  }
+  renderDetails(details, movieId) {
+    this.#details = details;
+    this.movieId = movieId;
+    this.movieDetails();
   }
   loader() {
     window.addEventListener("load", () => {
@@ -15,7 +29,7 @@ class MovieView {
       document.querySelector(".navbar").classList.add("sticky-top");
     });
   }
-  newElement(imgUrl, id) {
+  createWrapper(imgUrl, id) {
     const cardWrapper = document.createElement("div");
     cardWrapper.setAttribute("class", "card-wrapper ms-1 me-2");
 
@@ -35,7 +49,7 @@ class MovieView {
     return cardWrapper;
   }
   containerHandler(container, imgUrl, id) {
-    const movies = this.newElement(imgUrl, id);
+    const movies = this.createWrapper(imgUrl, id);
     container.classList.add("custom-scrollbar");
     container.appendChild(movies);
   }
@@ -44,10 +58,32 @@ class MovieView {
     const id = item.id;
     this.containerHandler(element, imgUrl, id);
   }
-  displayElement() {
+  eventHandler(handler) {
+    document.body.addEventListener("click", handler);
+  }
+  displayWrapper() {
     this.#data[0].map((item) => this.mapTitle(item, upMovCon));
     this.#data[1].map((item) => this.mapTitle(item, newMovCon));
     this.#data[2].map((item) => this.mapTitle(item, topMovCon));
+  }
+  movieDetails() {
+    ratings.innerHTML = `<i class="far fa-star"></i> ${this.#details.vote}`;
+    movieIdImg.src = this.#details.imgSrc;
+    this.#details.genre.map((e) => {
+      const genreItem = document.createElement("div");
+      genreItem.setAttribute("class", "genre-item mx-1 py-2 px-3");
+      genreItem.textContent = e;
+      genreCon.appendChild(genreItem);
+    });
+    runTime.textContent = `${this.#details.runtime} min`;
+    titleTxt.textContent = this.#details.title;
+    releaseDate.textContent = this.#details.releaseDate;
+    tagLine.textContent = this.#details.tagline;
+    overviewTxt.textContent = this.#details.overview;
+    setTimeout(() => {
+      movDetails.classList.remove("d-none");
+      document.body.classList.add("overflow-hidden");
+    }, 450);
   }
 }
 

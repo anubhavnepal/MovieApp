@@ -74,6 +74,50 @@
 
     </div>
   </section>
+  <section class="movie-details-view custom-scrollbar text-light px-4 d-none">
+    <div class="">
+      <button class="get-back-btn btn btn-light rounded-circle">
+        <i class="fas fa-long-arrow-alt-left"></i>
+      </button>
+    </div>
+    <div class="movie-info img-container d-flex align-items-start">
+      <div class="card-container d-flex justify-content-start pt-1 pb-1">
+        <div class="card-wrapper">
+          <div class="card border-0 bg-transparent">
+            <img src="" class="card-img-top" id="imgMovieId" alt="image">
+          </div>
+        </div>
+      </div>
+      <div class="ps-3">
+        <div class="genre d-flex align-items-center mb-4"></div>
+        <div class="movie-title">
+          <div class="title-status mb-3">
+            <h3 class="fw-normal title-txt"></h3>
+            <h5 class="release-date fs-5 fst-italic text-secondary"></h5>
+          </div>
+          <div class="contents d-flex justify-content-between align-items-center">
+            <div class="d-flex">
+              <p class="ratings m-0 fs-5"></p>
+              <p class="run-time m-0 fs-5 ms-2 ps-1 border-start"></p>
+            </div>
+            <div class="movie-watch">
+              <button type="button" class="watch-trailer btn btn-light">
+              <i class="fas fa-play"></i>
+                Watch Trailer
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="movie-overview mt-3 mb-2">
+          <div class="mb-2">
+            <h5 class="movie-tagline fst-italic text-secondary"></h5>
+          </div>
+          <textarea class="overview-txt border-0 bg-transparent custom-scrollbar text-start" cols="30" rows="7" readonly>
+          </textarea>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 
 </html>
