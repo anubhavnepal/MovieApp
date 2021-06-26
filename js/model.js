@@ -1,47 +1,36 @@
+import { getRes } from "./helper.js";
+import * as config from "./config.js";
+
 export const state = {
   result: {},
-  details:{},
-}
-
-const getRes = async function(url, err = "Something went wrong") {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`${err} (${res.status})`);
-  return await res.json();
-}
+  details: {},
+};
 
 export const loadMovie = async function () {
   try {
     const data = await Promise.all([
-      getRes(
-        "https://api.themoviedb.org/3/movie/upcoming?api_key=531bf6af87ea9bad6ceb5623091d31fe&language=en-US&page=2"
-      ),
-      getRes(
-        "https://api.themoviedb.org/3/movie/popular?api_key=531bf6af87ea9bad6ceb5623091d31fe&language=en-US&page=1"
-      ),
-      getRes(
-        "https://api.themoviedb.org/3/movie/top_rated?api_key=531bf6af87ea9bad6ceb5623091d31fe&language=en-US&page=3"
-      ),
+      getRes(config.UPCOMING_URL),
+      getRes(config.POPULAR_URL),
+      getRes(config.TOP_RATED_URL),
     ]);
     const results = data.map((e) => e.results);
     state.result = results;
-  } catch(err) {
+  } catch (err) {
     alert(err);
-   }
-}
+  }
+};
 
 export const loadMovieDetails = async function (id) {
   try {
-    const data = await getRes(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=531bf6af87ea9bad6ceb5623091d31fe&append_to_response=videos`
-    );
+    const data = await getRes(config.videosUrl(id));
     let genres = data.genres.map((item) => item.name);
-    const videoLink = data.videos.results[0].key;
+    const videoKey = data.videos.results[0].key;
     state.details = {
-      imgSrc: `https://image.tmdb.org/t/p/w500/${data.poster_path}`,
+      imgSrc: `${config.IMG_URL}${data.poster_path}`,
       title: data.title,
       vote: data.vote_average,
       genre: genres,
-      video: `https://www.youtube.com/watch?v=${videoLink}`,
+      video: `${config.TRAILER_URL}${videoKey}`,
       releaseDate: data.release_date,
       runtime: data.runtime,
       tagline: data.tagline,
@@ -50,4 +39,4 @@ export const loadMovieDetails = async function (id) {
   } catch (err) {
     alert(err);
   }
-}
+};
