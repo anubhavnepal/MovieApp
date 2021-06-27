@@ -1,7 +1,10 @@
-import * as model from './model.js';
+import * as model from "./model.js";
 import { movDetails } from "./view.js";
 import { genreCon } from "./view.js";
-import movieView from './view.js';
+import { closePlayer } from "./view.js";
+import { overlay } from "./view.js";
+import { trailerContainer } from "./view.js";
+import movieView from "./view.js";
 
 async function moviesHandler() {
   try {
@@ -23,7 +26,9 @@ const multiEvents = async function (e) {
       movieView.renderDetails(model.state.details, id);
     }
     if (viewTrailer) {
-      window.open(model.state.details.video);
+      playVideo();
+      trailerContainer.classList.remove("d-none");
+      overlay.classList.remove("d-none");
     }
     if (getBack) {
       setTimeout(() => {
@@ -37,6 +42,13 @@ const multiEvents = async function (e) {
   }
 };
 
-movieView.eventHandler(multiEvents);
+const exitPlayer = function () {
+  trailerContainer.classList.add("d-none");
+  overlay.classList.add("d-none");
+  stopVideo();
+};
+
+movieView.eventHandler(document.body, multiEvents);
+movieView.eventHandler(closePlayer, exitPlayer);
 
 moviesHandler();

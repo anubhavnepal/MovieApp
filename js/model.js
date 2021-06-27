@@ -16,15 +16,17 @@ export const loadMovie = async function () {
     const results = data.map((e) => e.results);
     state.result = results;
   } catch (err) {
-    alert(err);
+    throw err;
   }
 };
 
 export const loadMovieDetails = async function (id) {
   try {
     const data = await getRes(config.videosUrl(id));
-    let genres = data.genres.map((item) => item.name);
+    const genres = data.genres.map((item) => item.name);
     const videoKey = data.videos.results[0].key;
+    loadVideoById(videoKey);
+    stopVideo();
     state.details = {
       imgSrc: `${config.IMG_URL}${data.poster_path}`,
       title: data.title,
@@ -37,6 +39,6 @@ export const loadMovieDetails = async function (id) {
       overview: data.overview,
     };
   } catch (err) {
-    alert(err);
+    throw err;
   }
 };

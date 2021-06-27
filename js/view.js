@@ -1,5 +1,8 @@
 export const movDetails = document.querySelector(".movie-details-view");
 export const genreCon = document.querySelector(".genre");
+export const trailerContainer = document.querySelector(".trailer-container");
+export const closePlayer = document.querySelector(".trailer-exit");
+export const overlay = document.querySelector(".overlay");
 const upMovCon = document.querySelector(".upcoming-movie");
 const newMovCon = document.querySelector(".new-releases-movie");
 const topMovCon = document.querySelector(".top-rated-movie");
@@ -58,8 +61,8 @@ class MovieView {
     const id = item.id;
     this.containerHandler(element, imgUrl, id);
   }
-  eventHandler(handler) {
-    document.body.addEventListener("click", handler);
+  eventHandler(element,handler) {
+    element.addEventListener("click", handler);
   }
   displayWrapper() {
     this.#data[0].map((item) => this.mapTitle(item, upMovCon));

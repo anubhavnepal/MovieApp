@@ -9,12 +9,9 @@
     integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
     integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-   rel="stylesheet"
-   href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
- />
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <script type="module" src="js/control.js" defer></script>
   <title>MOVIENEST</title>
 </head>
@@ -42,7 +39,7 @@
       </div>
     </div>
     </div>
-  </section >
+  </section>
 
   <section class="upcoming text-light">
     <div class="header d-flex justify-content-between align-items-center px-4 my-2">
@@ -75,6 +72,7 @@
     </div>
   </section>
   <section class="movie-details-view custom-scrollbar text-light px-4 d-none">
+    <div class="overlay d-none"></div>
     <div class="">
       <button class="get-back-btn btn btn-light rounded-circle">
         <i class="fas fa-long-arrow-alt-left"></i>
@@ -102,22 +100,57 @@
             </div>
             <div class="movie-watch">
               <button type="button" class="watch-trailer btn btn-light">
-              <i class="fas fa-play"></i>
+                <i class="fas fa-play"></i>
                 Watch Trailer
               </button>
             </div>
           </div>
         </div>
+
         <div class="movie-overview mt-3 mb-2">
           <div class="mb-2">
             <h5 class="movie-tagline fst-italic text-secondary"></h5>
           </div>
-          <textarea class="overview-txt border-0 bg-transparent custom-scrollbar text-start" cols="30" rows="7" readonly>
+          <textarea class="overview-txt border-0 bg-transparent custom-scrollbar text-start" cols="30" rows="7"
+            readonly>
           </textarea>
         </div>
       </div>
     </div>
+    <div class="trailer-container d-none">
+      <div class="trailer-view">
+        <div id="player"></div>
+        <div class="trailer-exit">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+    </div>
   </section>
+  <script>
+    const tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api?rel=0";
+
+    const firstScriptTag = document.getElementsByTagName("script")[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    
+    let player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player("player", {
+        playerVars: {
+          'playsinline': 1,
+        },
+      });
+    }
+    function loadVideoById(id){
+      player.loadVideoById({videoId:`${id}`})
+    }
+    function playVideo(){
+      player.playVideo();
+    }
+    function stopVideo() {
+      player.stopVideo();
+    }
+  </script>
 </body>
 
 </html>
