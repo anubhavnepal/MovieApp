@@ -45,7 +45,7 @@ i {
   }
 }
 .overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: -0.5%;
   width: 100vw;
@@ -91,7 +91,9 @@ section {
       }
     }
     .input-wrapper {
-      // width: 25%;
+      @media (min-width: 992px) {
+        width: 25%;
+      }
       .has-search {
         .form-control {
           border: #323339;

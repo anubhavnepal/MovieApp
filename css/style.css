@@ -52,7 +52,7 @@ i {
 }
 
 .overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: -0.5%;
   width: 100vw;
@@ -107,6 +107,12 @@ section.navbar .logo-img {
 
 section.navbar .navigations a {
   color: #6c757d;
+}
+
+@media (min-width: 992px) {
+  section.navbar .input-wrapper {
+    width: 25%;
+  }
 }
 
 section.navbar .input-wrapper .has-search .form-control {
