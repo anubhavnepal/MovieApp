@@ -20,20 +20,21 @@
   <section class="loader text-center pt-5 text-light">
     <img src="img/pre-loader.png" class="animate__animated animate__pulse animate__infinite" alt="">
   </section>
-  <section class="navbar navbar-expand-lg navbar-dark py-4 mb-4">
-    <div class="container justify-content-around ">
-      <div class="logo">
+  <section class="navbar sticky-md-top navbar-expand-lg navbar-dark pt-3 pb-2 mb-4">
+    <div class="container justify-content-between flex-column flex-md-row">
+      <div class="logo mb-2 mb-md-0">
         <a class="" href="index.html">
+          <img src="img/pre-loader.png" alt="title" class="logo" width="50">
           <img src="img/logo.png" alt="title" class="logo">
         </a>
       </div>
-      <div class="navigations">
+      <div class="navigations d-flex justify-content-center align-items-center mb-2 mb-md-0">
         <a href="#movies" class="text-decoration-none fs-4 me-4 active">Movies</a>
-        <a href="#tv-shows" class="text-decoration-none fs-4 me-4">TV Shows</a>
+        <a href="#tv-shows" class="text-decoration-none fs-4">TV Shows</a>
       </div>
       <div class="input-wrapper">
         <div class="form-group has-search">
-          <span class="fa fa-search form-control-feedback"></span>
+          <span class="fa fa-search form-control-feedback text-center"></span>
           <input type="text" class="form-control" placeholder="Search">
         </div>
       </div>
@@ -42,32 +43,32 @@
   </section>
 
   <section class="upcoming text-light">
-    <div class="header d-flex justify-content-between align-items-center px-4 my-2">
+    <div class="header d-flex justify-content-between align-items-center px-3 px-md-4 my-2">
       <div class="title">
         <h3 class="fw-normal">Upcoming</h3>
       </div>
     </div>
-    <div class="card-container upcoming-movie d-flex justify-content-start px-4">
+    <div class="card-container upcoming-movie d-flex justify-content-start px-2 px-md-4">
 
     </div>
   </section>
   <section class="new-releases text-light">
-    <div class="header d-flex justify-content-between align-items-center px-4 my-2">
+    <div class="header d-flex justify-content-between align-items-center px-3 px-md-4 my-2">
       <div class="title">
         <h3 class="fw-normal">New Releases</h3>
       </div>
     </div>
-    <div class="card-container new-releases-movie d-flex justify-content-start px-4">
+    <div class="card-container new-releases-movie d-flex justify-content-start px-2 px-md-2">
 
     </div>
   </section>
   <section class="top-rated text-light">
-    <div class="header d-flex justify-content-between align-items-center px-4 my-2">
+    <div class="header d-flex justify-content-between align-items-center px-3 px-md-4 my-2">
       <div class="title">
         <h3 class="fw-normal">Top Rated</h3>
       </div>
     </div>
-    <div class="card-container top-rated-movie d-flex justify-content-start px-4">
+    <div class="card-container top-rated-movie d-flex justify-content-start px-2 px-md-4">
 
     </div>
   </section>
@@ -78,30 +79,30 @@
         <i class="fas fa-long-arrow-alt-left"></i>
       </button>
     </div>
-    <div class="movie-info img-container d-flex align-items-start">
-      <div class="card-container d-flex justify-content-start pt-1 pb-1">
+    <div class="movie-info img-container d-flex align-items-start flex-column flex-md-row">
+      <div class="card-container d-flex justify-content-start pt-1 pb-1 m-auto m-md-0">
         <div class="card-wrapper">
           <div class="card border-0 bg-transparent">
-            <img src="" class="card-img-top" id="imgMovieId" alt="image">
+            <img src="" class="card-img-top m-auto m-md-0" id="imgMovieId" alt="image">
           </div>
         </div>
       </div>
-      <div class="ps-3">
-        <div class="genre d-flex align-items-center mb-4"></div>
+      <div class="mt-2 mt-md-0 ps-md-3 m-auto m-md-0 text-center text-md-start">
+        <div class="genre d-flex justify-content-center justify-content-md-start align-items-center flex-wrap mb-4"></div>
         <div class="movie-title">
           <div class="title-status mb-3">
             <h3 class="fw-normal title-txt"></h3>
             <h5 class="release-date fs-5 fst-italic text-secondary"></h5>
           </div>
-          <div class="contents d-flex justify-content-between align-items-center">
+          <div class="contents d-flex justify-content-between align-items-center m-auto m-md-0">
             <div class="d-flex">
               <p class="ratings m-0 fs-5"></p>
               <p class="run-time m-0 fs-5 ms-2 ps-1 border-start"></p>
             </div>
             <div class="movie-watch">
-              <button type="button" class="watch-trailer btn btn-light">
+              <button type="button" class=" watch-trailer btn btn-light px-1 py-1">
                 <i class="fas fa-play"></i>
-                Watch Trailer
+                Trailer
               </button>
             </div>
           </div>
@@ -111,7 +112,7 @@
           <div class="mb-2">
             <h5 class="movie-tagline fst-italic text-secondary"></h5>
           </div>
-          <textarea class="overview-txt border-0 bg-transparent custom-scrollbar text-start" cols="30" rows="7"
+          <textarea class="overview-txt border-0 bg-transparent custom-scrollbar text-center text-sm-start" cols="30" rows="7"
             readonly>
           </textarea>
         </div>
@@ -128,7 +129,7 @@
   </section>
   <script>
     const tag = document.createElement("script");
-    tag.src = "https://www.youtube.com/iframe_api?rel=0";
+    tag.src = "https://www.youtube.com/iframe_api";
 
     const firstScriptTag = document.getElementsByTagName("script")[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);

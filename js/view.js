@@ -29,7 +29,6 @@ class MovieView {
     window.addEventListener("load", () => {
       document.body.classList.remove("overflow-hidden");
       document.querySelector(".loader").classList.add("d-none");
-      document.querySelector(".navbar").classList.add("sticky-top");
     });
   }
   createWrapper(imgUrl, id) {
@@ -74,7 +73,7 @@ class MovieView {
     movieIdImg.src = this.#details.imgSrc;
     this.#details.genre.map((e) => {
       const genreItem = document.createElement("div");
-      genreItem.setAttribute("class", "genre-item mx-1 py-2 px-3");
+      genreItem.setAttribute("class", "genre-item mx-1 mt-2 py-2 px-3");
       genreItem.textContent = e;
       genreCon.appendChild(genreItem);
     });

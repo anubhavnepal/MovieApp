@@ -2,6 +2,10 @@ body {
   background: #1c1d23;
   overflow-x: hidden;
 }
+i {
+  pointer-events: none;
+}
+
 .active {
   color: #00a1ed !important;
 }
@@ -40,10 +44,10 @@ body {
     }
   }
 }
-.overlay{
+.overlay {
   position: absolute;
   top: 0;
-  left: -.5%;
+  left: -0.5%;
   width: 100vw;
   height: 100vh;
   z-index: 15;
@@ -87,7 +91,7 @@ section {
       }
     }
     .input-wrapper {
-      width: 25%;
+      // width: 25%;
       .has-search {
         .form-control {
           border: #323339;
@@ -107,7 +111,6 @@ section {
             width: 2.375rem;
             height: 2.375rem;
             line-height: 2.875rem;
-            text-align: center;
             pointer-events: none;
             color: #555459;
           }
@@ -126,14 +129,12 @@ section {
     left: 0;
     right: 0;
     z-index: 20;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     .get-back-btn {
       position: absolute;
       top: 5%;
       z-index: 10;
-      i {
-        pointer-events: none;
-      }
     }
     .movie-info {
       .card {
@@ -157,6 +158,9 @@ section {
         &:first-child {
           margin-left: 0 !important;
         }
+        &:last-child {
+          margin-right: 0 !important;
+        }
       }
     }
     .movie {
@@ -177,16 +181,12 @@ section {
             }
           }
         }
-        .watch-trailer {
-          i {
-            pointer-events: none;
-          }
-        }
       }
       &-overview {
         textarea {
           width: 70vw;
-          overflow: auto;
+          overflow-x: hidden;
+          overflow-y: auto;
           color: #828282;
           line-height: 1.7;
           font-size: 1.1rem;
@@ -212,6 +212,12 @@ section {
           width: 65vw;
           padding-bottom: 56.25%;
           height: 0px;
+          @media (max-width: 576px) {
+            width: 84vw;
+          }
+          @media (min-width: 576px) and (max-width: 768px) {
+            width: 80vw;
+          }
           iframe {
             position: absolute;
             top: 0;
@@ -227,9 +233,6 @@ section {
           top: -2%;
           right: -5%;
           cursor: pointer;
-          i{
-            pointer-events: none;
-          }
         }
       }
     }

@@ -3,6 +3,10 @@ body {
   overflow-x: hidden;
 }
 
+i {
+  pointer-events: none;
+}
+
 .active {
   color: #00a1ed !important;
 }
@@ -50,7 +54,7 @@ body {
 .overlay {
   position: absolute;
   top: 0;
-  left: -.5%;
+  left: -0.5%;
   width: 100vw;
   height: 100vh;
   z-index: 15;
@@ -105,10 +109,6 @@ section.navbar .navigations a {
   color: #6c757d;
 }
 
-section.navbar .input-wrapper {
-  width: 25%;
-}
-
 section.navbar .input-wrapper .has-search .form-control {
   border: #323339;
   padding: 0.65rem;
@@ -131,7 +131,6 @@ section.navbar .input-wrapper .has-search .form-control-feedback {
   width: 2.375rem;
   height: 2.375rem;
   line-height: 2.875rem;
-  text-align: center;
   pointer-events: none;
   color: #555459;
 }
@@ -147,17 +146,14 @@ section.movie-details-view {
   left: 0;
   right: 0;
   z-index: 20;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 section.movie-details-view .get-back-btn {
   position: absolute;
   top: 5%;
   z-index: 10;
-}
-
-section.movie-details-view .get-back-btn i {
-  pointer-events: none;
 }
 
 section.movie-details-view .movie-info .card {
@@ -185,6 +181,10 @@ section.movie-details-view .genre-item:first-child {
   margin-left: 0 !important;
 }
 
+section.movie-details-view .genre-item:last-child {
+  margin-right: 0 !important;
+}
+
 section.movie-details-view .movie-title .title-status {
   line-height: 0.5;
 }
@@ -203,13 +203,10 @@ section.movie-details-view .movie-title .contents .ratings i {
   font-size: 1.05rem;
 }
 
-section.movie-details-view .movie-title .watch-trailer i {
-  pointer-events: none;
-}
-
 section.movie-details-view .movie-overview textarea {
   width: 70vw;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   color: #828282;
   line-height: 1.7;
   font-size: 1.1rem;
@@ -238,6 +235,18 @@ section .trailer-container div.trailer-view {
   height: 0px;
 }
 
+@media (max-width: 576px) {
+  section .trailer-container div.trailer-view {
+    width: 84vw;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  section .trailer-container div.trailer-view {
+    width: 80vw;
+  }
+}
+
 section .trailer-container div.trailer-view iframe {
   position: absolute;
   top: 0;
@@ -253,9 +262,5 @@ section .trailer-container div.trailer-exit {
   top: -2%;
   right: -5%;
   cursor: pointer;
-}
-
-section .trailer-container div.trailer-exit i {
-  pointer-events: none;
 }
 /*# sourceMappingURL=style.css.map */
