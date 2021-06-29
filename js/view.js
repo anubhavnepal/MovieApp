@@ -1,21 +1,9 @@
-export const movDetails = document.querySelector(".movie-details-view");
-export const genreCon = document.querySelector(".genre");
-export const trailerContainer = document.querySelector(".trailer-container");
-export const closePlayer = document.querySelector(".trailer-exit");
-export const overlay = document.querySelector(".overlay");
-const upMovCon = document.querySelector(".upcoming-movie");
-const newMovCon = document.querySelector(".new-releases-movie");
-const topMovCon = document.querySelector(".top-rated-movie");
-const movieIdImg = document.getElementById("imgMovieId");
-const titleTxt = document.querySelector(".title-txt");
-const ratings = document.querySelector(".ratings");
-const runTime = document.querySelector(".run-time");
-const releaseDate = document.querySelector(".release-date");
-const tagLine = document.querySelector(".movie-tagline");
-const overviewTxt = document.querySelector(".overview-txt");
+import * as el from "./selectors.js";
+
 class MovieView {
   #data;
   #details;
+  #value;
   renderData(data) {
     this.#data = data;
     this.displayWrapper();
@@ -25,6 +13,10 @@ class MovieView {
     this.movieId = movieId;
     this.movieDetails();
   }
+  searchDat(value) {
+    this.#value = value;
+    this.searchMovie();
+  }
   loader() {
     window.addEventListener("load", () => {
       document.body.classList.remove("overflow-hidden");
@@ -33,7 +25,7 @@ class MovieView {
   }
   createWrapper(imgUrl, id) {
     const cardWrapper = document.createElement("div");
-    cardWrapper.setAttribute("class", "card-wrapper ms-1 me-2");
+    cardWrapper.setAttribute("class", `card-wrapper ms-1 me-3 mb-3`);
 
     const card = document.createElement("div");
     card.setAttribute("class", "card border-0 bg-transparent");
@@ -52,7 +44,6 @@ class MovieView {
   }
   containerHandler(container, imgUrl, id) {
     const movies = this.createWrapper(imgUrl, id);
-    container.classList.add("custom-scrollbar");
     container.appendChild(movies);
   }
   mapTitle(item, element) {
@@ -60,32 +51,36 @@ class MovieView {
     const id = item.id;
     this.containerHandler(element, imgUrl, id);
   }
-  eventHandler(element,handler) {
-    element.addEventListener("click", handler);
+  eventHandler(element, event = "click", handler) {
+    element.addEventListener(event, handler);
   }
   displayWrapper() {
-    this.#data[0].map((item) => this.mapTitle(item, upMovCon));
-    this.#data[1].map((item) => this.mapTitle(item, newMovCon));
-    this.#data[2].map((item) => this.mapTitle(item, topMovCon));
+    this.#data[0].map((item) => this.mapTitle(item, el.upMovCon));
+    this.#data[1].map((item) => this.mapTitle(item, el.newMovCon));
+    this.#data[2].map((item) => this.mapTitle(item, el.topMovCon));
   }
   movieDetails() {
-    ratings.innerHTML = `<i class="far fa-star"></i> ${this.#details.vote}`;
-    movieIdImg.src = this.#details.imgSrc;
+    el.ratings.innerHTML = `<i class="far fa-star"></i> ${this.#details.vote}`;
+    el.movieIdImg.src = this.#details.imgSrc;
     this.#details.genre.map((e) => {
       const genreItem = document.createElement("div");
       genreItem.setAttribute("class", "genre-item mx-1 mt-2 py-2 px-3");
       genreItem.textContent = e;
-      genreCon.appendChild(genreItem);
+      el.genreCon.appendChild(genreItem);
     });
-    runTime.textContent = `${this.#details.runtime} min`;
-    titleTxt.textContent = this.#details.title;
-    releaseDate.textContent = this.#details.releaseDate;
-    tagLine.textContent = this.#details.tagline;
-    overviewTxt.textContent = this.#details.overview;
+    el.runTime.textContent = `${this.#details.runtime} min`;
+    el.titleTxt.textContent = this.#details.title;
+    el.releaseDate.textContent = this.#details.releaseDate;
+    el.tagLine.textContent = this.#details.tagline;
+    el.overviewTxt.textContent = this.#details.overview;
     setTimeout(() => {
-      movDetails.classList.remove("d-none");
+      el.movDetails.classList.remove("d-none");
       document.body.classList.add("overflow-hidden");
     }, 450);
+  }
+  searchMovie() {
+    this.#value.map((item) => this.mapTitle(item, el.movieQue));
+    el.searchMovCon.classList.remove("d-none");
   }
 }
 

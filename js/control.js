@@ -1,9 +1,5 @@
 import * as model from "./model.js";
-import { movDetails } from "./view.js";
-import { genreCon } from "./view.js";
-import { closePlayer } from "./view.js";
-import { overlay } from "./view.js";
-import { trailerContainer } from "./view.js";
+import * as el from "./selectors.js";
 import movieView from "./view.js";
 
 async function moviesHandler() {
@@ -15,6 +11,19 @@ async function moviesHandler() {
     alert(err);
   }
 }
+
+const searchQue = async function (e) {
+  e.preventDefault();
+  el.movieQue.innerHTML = "";
+  try {
+    await model.movieSearch(el.inputVal.value);
+    movieView.searchDat(model.state.searchData);
+    el.inputVal.value = "";
+  } catch (err) {
+    alert(err);
+  }
+};
+
 const multiEvents = async function (e) {
   const isImgEl = e.target.classList.value === "card-img-top";
   const viewTrailer = e.target.classList[0] === "watch-trailer";
@@ -27,14 +36,14 @@ const multiEvents = async function (e) {
     }
     if (viewTrailer) {
       playVideo();
-      trailerContainer.classList.remove("d-none");
-      overlay.classList.remove("d-none");
+      el.trailerContainer.classList.remove("d-none");
+      el.overlay.classList.remove("d-none");
     }
     if (getBack) {
       setTimeout(() => {
-        movDetails.classList.add("d-none");
+        el.movDetails.classList.add("d-none");
         document.body.classList.remove("overflow-hidden");
-        genreCon.innerHTML = "";
+        el.genreCon.innerHTML = "";
       }, 400);
     }
   } catch (err) {
@@ -43,12 +52,13 @@ const multiEvents = async function (e) {
 };
 
 const exitPlayer = function () {
-  trailerContainer.classList.add("d-none");
-  overlay.classList.add("d-none");
+  el.trailerContainer.classList.add("d-none");
+  el.overlay.classList.add("d-none");
   stopVideo();
 };
 
-movieView.eventHandler(document.body, multiEvents);
-movieView.eventHandler(closePlayer, exitPlayer);
+movieView.eventHandler(document.body, "click", multiEvents);
+movieView.eventHandler(el.closePlayer, "click", exitPlayer);
+movieView.eventHandler(el.form, "submit", searchQue);
 
 moviesHandler();

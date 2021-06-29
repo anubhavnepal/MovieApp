@@ -2,8 +2,21 @@ import { getRes } from "./helper.js";
 import * as config from "./config.js";
 
 export const state = {
+  searchData: {},
   result: {},
   details: {},
+};
+
+export const movieSearch = async function (value) {
+  try {
+    const data = await getRes(
+      `https://api.themoviedb.org/3/search/movie?api_key=${config.API_KEY}&query=${value}`
+    );
+    const results = data.results;
+    state.searchData = results;
+  } catch (err) {
+    throw(err);
+  }
 };
 
 export const loadMovie = async function () {
