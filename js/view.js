@@ -23,6 +23,21 @@ class MovieView {
       document.querySelector(".loader").classList.add("d-none");
     });
   }
+  wrapperHeader(con, txt) {
+    const header = document.createElement("div");
+    header.setAttribute(
+      "class",
+      "header d-flex justify-content-between align-items-center px-3 px-md-4 my-2"
+    );
+    const title = document.createElement("div");
+    title.classList.add("title");
+    const h3 = document.createElement("h3");
+    h3.classList.add("fw-normal");
+    h3.textContent = txt;
+    title.appendChild(h3);
+    header.appendChild(title);
+    con.insertAdjacentElement("afterbegin", header);
+  }
   createWrapper(imgUrl, id) {
     const cardWrapper = document.createElement("div");
     cardWrapper.setAttribute("class", `card-wrapper ms-1 me-3 mb-3`);
@@ -60,13 +75,17 @@ class MovieView {
     element.addEventListener(event, handler);
   }
   displayWrapper() {
+    this.wrapperHeader(el.upConHeader, "UPCOMING");
     this.#data[0].map((item) => this.mapTitle(item, el.upMovCon));
+    this.wrapperHeader(el.newConHeader, "POPULAR");
     this.#data[1].map((item) => this.mapTitle(item, el.newMovCon));
+    this.wrapperHeader(el.topRatConHeader, "TOP RATED");
     this.#data[2].map((item) => this.mapTitle(item, el.topMovCon));
   }
   movieDetails() {
     const ratingsData = this.#details.vote;
-    el.ratings.innerHTML = ratingsData===0?"NR":`<i class="far fa-star"></i> ${ratingsData}`;
+    el.ratings.innerHTML =
+      ratingsData === 0 ? "NR" : `<i class="far fa-star"></i> ${ratingsData}`;
     el.movieIdImg.src = this.#details.imgSrc;
     this.#details.genre.map((e) => {
       const genreItem = document.createElement("div");
