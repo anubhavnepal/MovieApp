@@ -47,7 +47,12 @@ class MovieView {
     container.appendChild(movies);
   }
   mapTitle(item, element) {
-    const imgUrl = `https://image.tmdb.org/t/p/w500${item.poster_path}`;
+    let imgUrl;
+    if (item.poster_path === null) {
+      return;
+    } else {
+      imgUrl = `https://image.tmdb.org/t/p/w500${item.poster_path}`;
+    }
     const id = item.id;
     this.containerHandler(element, imgUrl, id);
   }
@@ -60,7 +65,8 @@ class MovieView {
     this.#data[2].map((item) => this.mapTitle(item, el.topMovCon));
   }
   movieDetails() {
-    el.ratings.innerHTML = `<i class="far fa-star"></i> ${this.#details.vote}`;
+    const ratingsData = this.#details.vote;
+    el.ratings.innerHTML = ratingsData===0?"NR":`<i class="far fa-star"></i> ${ratingsData}`;
     el.movieIdImg.src = this.#details.imgSrc;
     this.#details.genre.map((e) => {
       const genreItem = document.createElement("div");
@@ -68,7 +74,13 @@ class MovieView {
       genreItem.textContent = e;
       el.genreCon.appendChild(genreItem);
     });
-    el.runTime.textContent = `${this.#details.runtime} min`;
+    const runtimeData = this.#details.runtime;
+    if (runtimeData === 0) {
+      el.runTime.classList.add("d-none");
+    } else {
+      el.runTime.classList.remove("d-none");
+      el.runTime.textContent = `${runtimeData} min`;
+    }
     el.titleTxt.textContent = this.#details.title;
     el.releaseDate.textContent = this.#details.releaseDate;
     el.tagLine.textContent = this.#details.tagline;

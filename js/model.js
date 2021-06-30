@@ -37,7 +37,8 @@ export const loadMovieDetails = async function (id) {
   try {
     const data = await getRes(config.videosUrl(id));
     const genres = data.genres.map((item) => item.name);
-    const videoKey = data.videos.results[0].key;
+    let videoKey = data.videos.results;
+    videoKey = videoKey.length === 0 ? null : videoKey[0].key;
     loadVideoById(videoKey);
     stopVideo();
     state.details = {
