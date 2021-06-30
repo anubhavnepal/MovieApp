@@ -81,6 +81,7 @@ class MovieView {
   searchMovie() {
     this.#value.map((item) => this.mapTitle(item, el.movieQue));
     el.searchMovCon.classList.remove("d-none");
+    el.movsCon.classList.add("d-none");
   }
 }
 

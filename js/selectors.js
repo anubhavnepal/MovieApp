@@ -7,6 +7,7 @@ export const form = document.querySelector("form");
 export const inputVal = document.querySelector(".form-control");
 export const searchMovCon = document.querySelector(".search-movie-container");
 export const movieQue = document.querySelector(".movie-query");
+export const movsCon = document.querySelector(".movies-container");
 export const upMovCon = document.querySelector(".upcoming-movie");
 export const newMovCon = document.querySelector(".new-releases-movie");
 export const topMovCon = document.querySelector(".top-rated-movie");

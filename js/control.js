@@ -40,10 +40,24 @@ const multiEvents = async function (e) {
       el.overlay.classList.remove("d-none");
     }
     if (getBack) {
+      const parentEl = e.target.parentElement.parentElement;
       setTimeout(() => {
-        el.movDetails.classList.add("d-none");
-        document.body.classList.remove("overflow-hidden");
-        el.genreCon.innerHTML = "";
+        if (
+          parentEl.classList[0] ===
+          "movie-details-view"
+        ) {
+          el.movDetails.classList.add("d-none");
+          document.body.classList.remove("overflow-hidden");
+          el.genreCon.innerHTML = "";
+        }
+        if (
+          parentEl.classList[0] ===
+          "search-movie-container"
+        ) {
+          el.searchMovCon.classList.add("d-none");
+          el.movsCon.classList.remove("d-none");
+        }
+
       }, 400);
     }
   } catch (err) {
