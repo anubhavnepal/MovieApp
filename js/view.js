@@ -85,7 +85,7 @@ class MovieView {
   movieDetails() {
     const ratingsData = this.#details.vote;
     el.ratings.innerHTML =
-      ratingsData === 0 ? "NR" : `<i class="far fa-star"></i> ${ratingsData}`;
+      ratingsData === 0 ? "NR" : `<i class="far fa-star"></i> ${ratingsData.toFixed(1)}`;
     el.movieIdImg.src = this.#details.imgSrc;
     this.#details.genre.map((e) => {
       const genreItem = document.createElement("div");
